@@ -1,6 +1,6 @@
-##### JS条件语句
+## JS条件语句
 
-##### 目录
+### 目录
 - 1.判断存在 Array.includes
 - 2.Array.indexOf于Array.includes应用场景
 - 3.更少的嵌套，尽早 return
@@ -9,7 +9,7 @@
 - 6.对 所有/部分 判断使用 Array.every & Array.some
 - 7.Array.find/filter/some/Array.includes/reduce
 
-##### 1.判断存在 Array.includes
+#### 1.判断存在 Array.includes
 ```
 // --------- before
 function test(data) {
@@ -27,7 +27,7 @@ function test(data) {
 }
 ```
 
-##### 2.Array.indexOf于Array.includes应用场景
+#### 2.Array.indexOf于Array.includes应用场景
 - Array.indexOf
 > 如果需要在数组中查找某个元素，请使用 Array.indexOf。
 对 Array.indexOf 的描述是：返回在数组中可以找到一个给定元素的第一个`索引`，如果不存在，则返回-1
@@ -35,7 +35,7 @@ function test(data) {
 - Array.includes
 > 如果我们仅需要知道数组中是否包含给定元素，针对这种情况，我建议使用直接返回`布尔值`的 Array.includes
 
-##### 3.更少的嵌套，尽早 return
+#### 3.更少的嵌套，尽早 return
 ```
 // --------- before
 function test(fruit, quantity) {
@@ -93,7 +93,7 @@ function test(fruit, quantity) {
 }
 ```
 
-##### 4.默认参数和解构
+#### 4.默认参数和解构
 ```
 // --------- before
 function test(fruit, quantity) {
@@ -149,7 +149,7 @@ test({ }); // unknown
 test({ name: 'apple', color: 'red' }); // apple
 ```
 
-##### 5.遍历对象而不是 Switch 语句
+#### 5.遍历对象而不是 Switch 语句
 
 ```
 // --------- before
@@ -205,7 +205,7 @@ function test(color) {
 }
 ```
 
-##### 6.对 所有/部分 判断使用 Array.every & Array.some
+#### 6.对 所有/部分 判断使用 Array.every & Array.some
 
 ```
 // --------- before
