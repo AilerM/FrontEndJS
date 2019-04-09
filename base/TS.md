@@ -25,7 +25,7 @@ never类型
 ```
 
 - boolean number string 
-```
+```ts
 var num:number = 12
 var str:string = 'test'
 var flag:boolean = true
@@ -33,7 +33,7 @@ var flag:boolean = true
 flag = false // 正确
 ```
 - null undefined
-```
+```ts
 {
     // 在js中，变量已声明但未初始化为undefined
     var undefinedTest:number
@@ -50,25 +50,25 @@ flag = false // 正确
 }
 ```
 - null
-```
+```ts
 // null是一个空指针对象，undefined是未初始化的变量。因此，可以把undefined看作是空的变量，而null看作是空的对象
 var nullTest:null
 nullTest = null
 // nullTest = {} // 错误，定义了类型是null，值必须为null
 ```
 - array
-```
+```ts
 // 第一种
 var arr:number[] = [1, 2, 3]
 // 第二种
 var arr2:Array<number> = [1, 2, 3]
 ```
 - tuple
-```
+```ts
 let arr:[number,string] = [123,'this is ts']
 ```
 - enum
-```
+```ts
 enum Flag {success = 1,error = 2};
 
 let s:Flag = Flag.success // 使用枚举类型中的值
@@ -77,13 +77,13 @@ let f:Flag = Flag.error
 console.log('错误状态',f)
 ```
 - any
-```
+```ts
 var number:any = 123
 number = 'str'
 number = true
 ```
 - void
-```
+```ts
 // 表示方法没有返回任何类型
 function run(): void {
     console.log('run')
@@ -93,7 +93,7 @@ run()
 ```
 >
 - never
-```
+```ts
 var a:never
 // a = 123 //错误写法
 a = (() => {
@@ -108,7 +108,7 @@ a = (() => {
 >函数的定义、可选参数、默认参数、剩余参数、函数重载、箭头函数。
 
 - 定义
-```
+```ts
 // 函数声明
 function fn(x: Type, y: Type): Type {}
 
@@ -118,7 +118,7 @@ var fn = (x: Type, y: Type): Type => {}
 // 函数表达式：指定变量fn的类型
 var fn: (x: Type, y: Type) => Type = (x, y) => {}
 ```
-```
+```ts
 // 函数声明法
 function run(x: number, y: number): number {
     return x + y;
@@ -132,7 +132,7 @@ var run2 = (x: number, y: number): string => {
 run(1, 2);
 run2(1, 2);
 ```
-```
+```ts
 函数表达式法另外一种写法
 var run3: (x: number, y: number) => string = function(x: number, y: number): string{
     return 'run3';
@@ -140,7 +140,7 @@ var run3: (x: number, y: number) => string = function(x: number, y: number): str
 run3(1, 2);
 ```
 - 可选参数
-```
+```ts
 function electParam(name:string, age?:number):string {
     // 这里的age可传可不传，age就是可选参数
     if(age){
@@ -160,7 +160,7 @@ console.log('可选参数', electParam('dz'))
 
 ```
 - 默认参数
-```
+```ts
 // age为默认参数
 function defaultParam(name:string, age:number = 20):String {
     return `${name} --- ${age}`
@@ -170,7 +170,7 @@ console.log('默认参数', defaultParam('dz'))
 ```
 
 - 剩余参数
-```
+```ts
 // sum参数传过来的是一个数组
 function sum(...result: number[]): number {
     var sum = 0;
@@ -202,7 +202,7 @@ console.log('剩余参数2', sum2(1, 2, 3, 4, 5, 6));
 >java中方法的重载：重载指的是两个或者两个以上同名函数，但它们的参数不一样，这时会出现函数重载的情况。
 typescript中的重载：通过为同一个函数提供多个函数类型定义来实现多种功能的目的。
 ts为了兼容es5以及es6，重载的写法和java中有区别。
-```
+```ts
 function overloadingFn(x: number, y: number): number;
 function overloadingFn(x: string, y: string): string;
 
@@ -215,7 +215,7 @@ overloadingFn(1, 2);
 overloadingFn('a', 'b');
 ```
 - 箭头函数
-```
+```ts
 setTimeout(() => {
     console.log('箭头函数')
 }, 1000);
@@ -228,7 +228,7 @@ setTimeout(() => {
 
 #### 四、TypeScript泛型
 - 泛型函数
-```
+```ts
 function dataT<T>(value:T):T{
     // 传入参数为T 返回值为T
     return value
@@ -243,7 +243,7 @@ dataAny<number>(123); // 参数必须是number
 dataAny<string>('这是一个泛型');
 ```
 - 泛型类
-```
+```ts
 class MinClassT<T>{
     public list:T[]=[];
     add(value:T):void{
@@ -269,7 +269,7 @@ m2.add('c');
 m2.add('a');
 alert(m2.min())
 ```
-```
+```ts
 // 泛型接口定义方式一
 interface ConfigFnOne{
     <T>(value:T):T;

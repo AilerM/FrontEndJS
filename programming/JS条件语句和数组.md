@@ -10,7 +10,7 @@
 - 7.Array.find/filter/some/Array.includes/reduce
 
 #### 1.判断存在 Array.includes
-```
+```js
 // --------- before
 function test(data) {
   if (data === 'null' || data === null || data === undefined) {
@@ -36,7 +36,7 @@ function test(data) {
 > 如果我们仅需要知道数组中是否包含给定元素，针对这种情况，我建议使用直接返回`布尔值`的 Array.includes
 
 #### 3.更少的嵌套，尽早 return
-```
+```js
 // --------- before
 function test(fruit, quantity) {
   const redFruits = ['apple', 'strawberry', 'cherry', 'cranberries'];
@@ -94,7 +94,7 @@ function test(fruit, quantity) {
 ```
 
 #### 4.默认参数和解构
-```
+```js
 // --------- before
 function test(fruit, quantity) {
   if (!fruit) return;
@@ -122,7 +122,7 @@ test('apple', 2); // We have 2 apple!
 
 - 函数参数是对象
 
-```
+```js
 // --------- before
 function test(fruit) {
   if (fruit && fruit.name)  {
@@ -151,7 +151,7 @@ test({ name: 'apple', color: 'red' }); // apple
 
 #### 5.遍历对象而不是 Switch 语句
 
-```
+```js
 // --------- before
 function test(color) {
   switch (color) {
@@ -207,7 +207,7 @@ function test(color) {
 
 #### 6.对 所有/部分 判断使用 Array.every & Array.some
 
-```
+```js
 // --------- before
 const fruits = [
     { name: 'apple', color: 'red' },

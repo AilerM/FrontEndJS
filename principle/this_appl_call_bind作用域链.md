@@ -9,7 +9,7 @@
 #### 一、this指向
 >this **永远指向最后调用它的那个对象**
 
-```
+```js
  var name = "windowsName";
     var a = {
         // name: "Cherry",
@@ -21,7 +21,7 @@
 
 ```
 
-```
+```js
 var name = "windowsName";
     var a = {
         name : null,
@@ -34,7 +34,7 @@ var name = "windowsName";
     var f = a.fn;
     f();   // 突出 【调用】
 ```
-```
+```js
 var name = "windowsName";
 
     function fn() {
@@ -54,7 +54,7 @@ var name = "windowsName";
 >使用 apply、call、bind
 >new 实例化一个对象
 
-```
+```js
 var a = {
         name : "Cherry",
 
@@ -72,7 +72,7 @@ var a = {
 
     a.func2() 
 ```
-```
+```js
  var a = {
         name : "Cherry",
 
@@ -91,7 +91,7 @@ var a = {
     a.func2() 
 ```
 
-```
+```js
  var a = {
         name : "Cherry",
 
@@ -137,7 +137,7 @@ var a = {
 这看起来就像创建了新的函数，但实际上 JavaScript 函数是重新创建的对象：
 
 new 过程
-```
+```js
 var a = new myFunction("Li","Cherry");
 
 new myFunction{
@@ -157,7 +157,7 @@ new myFunction{
 >不传入第一个参数，那么上下文默认为 window
 改变了 this 指向，让新的对象可以执行该函数，并能接受参数
 
-```
+```js
 Function.prototype.myCall = function(context) {
   if (typeof this !== 'function') {
     throw new TypeError('Error')
@@ -171,7 +171,7 @@ Function.prototype.myCall = function(context) {
 }
 ```
 
-```
+```js
 Function.prototype.myApply = function(context) {
   if (typeof this !== 'function') {
     throw new TypeError('Error')
@@ -190,7 +190,7 @@ Function.prototype.myApply = function(context) {
 }
 ```
 
-```
+```js
 Function.prototype.myBind = function (context) {
   if (typeof this !== 'function') {
     throw new TypeError('Error')

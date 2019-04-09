@@ -95,7 +95,7 @@ Person instanceof Function // true
 提高代码可维护性
 ```
 AMD CMD
-```
+```es6
 // AMD
 define(['./a', './b'], function(a, b) {
   // 加载模块完毕可以使用
@@ -127,7 +127,7 @@ export default function() {}
 
 >filter 的作用也是生成一个新数组，在遍历数组的时候将返回值为 `true` 的元素放入新数组，我们可以利用这个函数删除一些不需要的元素
 
-```
+```es6
 let array = [1, 2, 4, 6]
 let newArray = array.filter(item => item !== 6)
 console.log(newArray) // [1, 2, 4]
@@ -135,7 +135,7 @@ console.log(newArray) // [1, 2, 4]
 
 > reduce 来说，它接受两个参数，分别是回调函数和初始值，接下来我们来分解上述代码中 reduce 的过程
 
-```
+```es6
 const arr = [1, 2, 3]
 const mapArray = arr.map(value => value * 2)
 const reduceArray = arr.reduce((acc, current) => {
@@ -147,7 +147,7 @@ console.log(mapArray, reduceArray) // [2, 4, 6]
 
 6: **你理解的 Generator 是什么？**
 
-```
+```es6
 function *foo(x) {
   let y = 2 * (yield (x + 1))
   let z = yield (y / 3)
