@@ -6,6 +6,7 @@
 - [数据应用](/base/数据应用.md)
 - [柯里化](/base/柯里化.md)
 - [纯函数](/base/纯函数.md)
+- [正则](/base/正则.md)
 
 ### principle 原理
 - [this_appl_call_bind作用域链](/principle/this_appl_call_bind作用域链.md)
