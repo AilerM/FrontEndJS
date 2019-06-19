@@ -40,8 +40,21 @@
       <div class="row-inline">
         <label for="fileName" class="fileNameLabel">上传文件:
           <input type="text" class="fileName" name="fileName" readonly="readonly" :value="fileNameValue" /></label>
-        <el-upload class="upload-wrap" :action="`${baseUrl}/nlp/uploadFile`" :headers="myHeaders" :multiple="false" :data="extraData" :show-file-list="false" ref="upload" :file-list="fileList" :on-error="handleError" :on-change="handleChange"
-          :before-upload="beforeUpload" :on-success="handleSuccess" :auto-upload="false">
+        <el-upload class="upload-wrap" 
+          :action="`${baseUrl}/nlp/uploadFile`" 
+          :headers="myHeaders" 
+          :multiple="false"
+          :data="extraData"
+          :show-file-list="false"
+          ref="upload"
+          :file-list="fileList"
+          accept=".xlsx,.xls,.csv"
+          :on-error="handleError"
+          :on-change="handleChange"
+          :before-upload="beforeUpload"
+          :on-success="handleSuccess"
+          :auto-upload="false"
+          >
           <button size="small" class="btn btn-bmw-default btn-submit" type="primary">浏览</button>
         </el-upload>
       </div>
