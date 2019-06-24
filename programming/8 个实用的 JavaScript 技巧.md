@@ -39,3 +39,8 @@ const cityNames = Array.from(cities, ({ name}) => name);
 console.log(cityNames);
 // 输出 ["Paris", "Lyon", "Marseille", "Rome", "Milan", "Palermo", "Genoa", "Berlin", "Hamburg", "New York"]
 ```
+
+4. 二纬变一纬
+```js
+Array.prototype.concat.apply([], this.filters)
+```
