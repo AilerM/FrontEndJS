@@ -1,3 +1,12 @@
+## 实用的JavaScript技巧
+
+### 目录
+- 1. 确保数组的长度
+- 2. 数组去重
+- 3. 数组映射（不使用 Array.map）
+- 4. 二维变一维
+
+
 1. 确保数组的长度
 ```js
 let array = Array(5).fill('');
@@ -40,7 +49,7 @@ console.log(cityNames);
 // 输出 ["Paris", "Lyon", "Marseille", "Rome", "Milan", "Palermo", "Genoa", "Berlin", "Hamburg", "New York"]
 ```
 
-4. 二纬变一纬
+4. 二维变一维
 ```js
 Array.prototype.concat.apply([], this.filters)
 ```
