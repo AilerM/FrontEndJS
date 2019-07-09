@@ -107,6 +107,24 @@ var a = {
 
     };
 ```
+```js
+var a = {
+  name: "a",
+  fn1: function () {
+    console.log(this.name)
+  }
+}
+var b = {
+  name: "b",
+  fn1: function () {
+    console.log(this.name)
+  }
+}
+b.fn1.call(a) // a
+a.fn1.call(b) // b
+a.fn1.bind(b)() // b
+
+```
 - apply、call、bind区别
 > apply() 方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数 fun.apply(thisArg, [argsArray])
 
