@@ -26,10 +26,12 @@ const cars = [
     'Mazda'
 ]
 const uniqueWithArrayFrom = Array.from(new Set(cars));
-console.log(uniqueWithArrayFrom); // 输出 ["Mazda", "Ford", "Renault", "Opel"]
+console.log(uniqueWithArrayFrom); //输出 ["Mazda", "Ford", "Renault", "Opel"]
 
 const uniqueWithSpreadOperator = [...new Set(cars)];
 console.log(uniqueWithSpreadOperator);// 输出 ["Mazda", "Ford", "Renault", "Opel"]
+
+
 ```
 - other
 ```js
