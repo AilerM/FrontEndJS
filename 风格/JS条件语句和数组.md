@@ -265,7 +265,7 @@ function test() {
  - 不同：Array.some 的参数是`回调函数`，而 Array.includes 的参数是一个`值`
  - 总结：Array.includes 使用更简单，Array.some 可操控性更强。
 
-```
+```js
 const characters = [
   { id: 1, name: 'ironman' },
   { id: 2, name: 'black_widow' },
@@ -293,7 +293,7 @@ console.log(characters.some(getCharacter('captain_america')));
 - Array.reduce 代替 Array.filter 与 Array.map 的组合
 >Array.filter 过滤原数组，之后（对结果）再调用 Array.map （以获取一个新数组）,我们遍历了两次数组,Array.reduce 允许你将过滤后切加工过的项放进累加器中。累加器可以是需要待递增的数字、待填充的对象、 待拼接的字符串或数组等。
 
-```
+```js
 const characters = [
   { name: 'ironman', env: 'marvel' },
   { name: 'black_widow', env: 'marvel' },
