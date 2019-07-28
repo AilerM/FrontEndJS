@@ -43,8 +43,8 @@ let row = Math.ceil(num/10);
 let obj = {   
      name:'tom',     
      age:15,     
-     sex:'男' 
-} 
+     sex:'男'
+}
 //bad
 let obj = {};
 obj.name = 'tom';
@@ -96,6 +96,7 @@ function createMenu(config) {
 
 createMenu(menuConfig);
 ```
+
 - 4.将对象的属性值保存为局部变量
 >对象成员嵌套越深，读取速度也就越慢。所以好的经验法则是：如果在函数中需要多次读取一个对象属性，最佳做法是将该属性值保存在局部变量中，避免多次查找带来的性能开销。
 ```js
@@ -110,7 +111,7 @@ function  getMaleSex(){
     if(sex === '男'){
         console.log(sex)
     }
-} 
+}
 //bad
 let person = {
     info:{
@@ -121,10 +122,12 @@ function  getMaleSex(){
     if(person.info.sex === '男'){
         console.log(person.info.sex)
     }
-} 
+}
 ```
+
 - 5.字符串转为整型
->当需要将浮点数转换成整型时，应该使用**Math.floor()或者Math.round()**，而不是使用parseInt()将字符串转换成数字。Math 是内部对象，所以Math.floor()其实并没有多少查询方法和调用时间，速度是最快的。
+>当需要将浮点数转换成整型时，应该使用**Math.floor()或者Math.round()**，而不是使用parseInt()将字符串转换成数字。Math 是内部对象，所以Math.floor()其实并没有多少查询方法和调用时间，速度是最快的。**
+
 ```js
 //good
 let num = Math.floor('1.6');
