@@ -8,6 +8,8 @@
 - 5. 数组去重
 - 6. 获得数组最大最小值
 - 7. 获取数组交集
+- 8. Object.values()
+- 9. Object.entries()
 
 1. 确保数组的长度
 ```js
@@ -121,3 +123,36 @@ Math.min.apply(null, arr); // 6
 const similarity = (arr1, arr2) => arr1.filter(v => arr2.includes(v));
 similarity([1, 2, 3], [1, 2, 4]); // [1,2]
 ```
+
+
+8. Object.values()
+```
+let meals = {
+  mealA: 'Breakfast',
+  mealB: 'Lunch',
+  mealC: 'Dinner'
+};
+for (let key of Object.keys(meals)) {
+  let mealName = meals[key];
+  // ... do something with mealName
+  console.log(mealName);
+}
+// 'Breakfast' 'Lunch' 'Dinner'
+```        
+
+9. Object.entries()
+```
+let meals = {
+  mealA: 'Breakfast',
+  mealB: 'Lunch',
+  mealC: 'Dinner'
+};
+for (let [key, value] of Object.entries(meals)) {
+  console.log(key + ':' + value);
+}
+// 'mealA:Breakfast' 'mealB:Lunch' 'mealC:Dinner'
+```        
+
+Object.values() 和Object.entries() 是为JS开发人员提供新的标准化辅助函数的另一个改进步骤。
+Object.entries()最适用于数组解构赋值，其方式是将键和值轻松分配给不同的变量。 此函数还可以轻松地将纯JS对象属性映射到Map对象中。
+注意，Object.values()和Object.entries()返回数据的顺序是不确定的，所以不要依赖该方式。
