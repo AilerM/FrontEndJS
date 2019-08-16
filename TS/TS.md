@@ -1,11 +1,9 @@
-## start-with-typescript
->[start-with-typescript](https://github.com/dzfrontend/start-with-typescript)
-
 ### 目录
 *  一、TypeScript数据类型
 *  二、TypeScript函数
-*  三、TypeScript类 接口
-*  四、TypesSript泛型 
+*  三、TypeScript断言
+*  四、TypeScript类 接口
+*  五、TypesSript泛型 
 
 #### 一、TypeScript数据类型
 ```
@@ -32,6 +30,7 @@ var flag:boolean = true
 
 flag = false // 正确
 ```
+
 - null undefined
 ```ts
 {
@@ -49,6 +48,7 @@ flag = false // 正确
     console.log(num);
 }
 ```
+
 - null
 ```ts
 // null是一个空指针对象，undefined是未初始化的变量。因此，可以把undefined看作是空的变量，而null看作是空的对象
@@ -56,17 +56,35 @@ var nullTest:null
 nullTest = null
 // nullTest = {} // 错误，定义了类型是null，值必须为null
 ```
+
 - array
 ```ts
 // 第一种
 var arr:number[] = [1, 2, 3]
 // 第二种
 var arr2:Array<number> = [1, 2, 3]
+
+➖➖➖➖➖➖➖➖➖用接口表示数组➖➖➖➖➖➖➖➖➖
+interface NumberArray {
+    [index: number]: number;
+}
+let fibonacci: NumberArray = [1, 1, 2, 3, 5];
+
+➖➖➖➖➖➖➖➖➖any 在数组中的应用➖➖➖➖➖➖➖➖➖
+let list: any[] = ['Xcat Liu', 25, { website: 'http://xcatliu.com' }];
+
+➖➖➖➖➖➖➖➖➖类数组➖➖➖➖➖➖➖➖➖
+function sum() {
+    let args: IArguments = arguments;
+}
+
 ```
+
 - tuple
 ```ts
 let arr:[number,string] = [123,'this is ts']
 ```
+
 - enum
 ```ts
 enum Flag {success = 1,error = 2};
@@ -75,13 +93,26 @@ let s:Flag = Flag.success // 使用枚举类型中的值
 console.log('正确状态',s)
 let f:Flag = Flag.error
 console.log('错误状态',f)
+
+// 枚举（Enum）类型用于取值被限定在一定范围内的场景，比如一周只能有七天	
+// 枚举就是枚举值到枚举名进行反向映射
+
+enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
+console.log(Days["Sun"]); // 0
+console.log(Days[0]); // 'Sun'
+
+enum Days {Sun = 7, Mon = 1, Tue, Wed, Thu, Fri, Sat};
+console.log(Days["Sun"]); // 7
+
 ```
+
 - any
 ```ts
 var number:any = 123
 number = 'str'
 number = true
 ```
+
 - void
 ```ts
 // 表示方法没有返回任何类型
@@ -101,6 +132,84 @@ a = (() => {
 })()
 ```
 
+>
+- 对象类型
+➖➖➖➖➖➖➖➖➖正确的写法➖➖➖➖➖➖➖➖➖
+```ts
+
+//希望一个接口允许有任意的属性，可以使用如下方式：旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集
+interface Person {
+    name: string;
+    age?: number;
+    [propName: string]: any;
+}
+
+let tom: Person = {
+    name: 'Tom',
+    gender: 'male' // 可以加其他的属性
+};
+
+➖➖➖➖➖➖➖➖➖只读属性➖➖➖➖➖➖➖➖➖
+interface Person {
+    readonly id: number; // 
+    name: string;
+    age?: number;
+    [propName: string]: any;
+}
+
+let tom: Person = {
+    id: 89757, // 只读
+    name: 'Tom',
+    gender: 'male'
+};
+```
+➖➖➖➖➖➖➖➖➖错误的写法➖➖➖➖➖➖➖➖➖
+```ts
+// 一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的*子集*
+interface Person {
+    name: string;
+    age?: number;
+    [propName: string]: string;
+}
+
+let tom: Person = {
+    name: 'Tom',
+    age: 25,
+    gender: 'male'❌
+};
+上例中，任意属性的值允许是 string，但是可选属性 age 的值却是 number，number 不是 string 的子属性，所以报错了。
+
+➖➖➖➖➖➖➖➖➖只读属性➖➖➖➖➖➖➖➖➖
+interface Person {
+    readonly id: number;
+    name: string;
+    age?: number;
+    [propName: string]: any;
+}
+
+let tom: Person = {
+    name: 'Tom',
+    gender: 'male'
+};
+
+tom.id = 89757; // 不能被二次赋值❌
+
+```
+
+- 类型别名
+```ts
+// 使用 type 创建类型别名,类型别名常用于联合类型
+type Name = string;
+type NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
+function getName(n: NameOrResolver): Name {
+    if (typeof n === 'string') {
+        return n;
+    } else {
+        return n();
+    }
+}
+```
 ----
 
 
@@ -115,7 +224,7 @@ function fn(x: Type, y: Type): Type {}
 // 函数表达式
 var fn = (x: Type, y: Type): Type => {}
 
-// 函数表达式：指定变量fn的类型
+// 函数表达式：指定变量fn的类型 ⚠️
 var fn: (x: Type, y: Type) => Type = (x, y) => {}
 ```
 ```ts
@@ -198,6 +307,21 @@ function sum2(a: number, b: number, ...result: number[]): number {
 console.log('剩余参数2', sum2(1, 2, 3, 4, 5, 6));
 
 ```
+
+```ts
+➖➖➖➖➖➖➖➖➖接口定义函数的形状➖➖➖➖➖➖➖➖➖
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source, subString) {
+    return source.search(subString) !== -1;
+}
+```
+
+
+
 - 函数重载
 >java中方法的重载：重载指的是两个或者两个以上同名函数，但它们的参数不一样，这时会出现函数重载的情况。
 typescript中的重载：通过为同一个函数提供多个函数类型定义来实现多种功能的目的。
@@ -223,10 +347,62 @@ setTimeout(() => {
 
 ---
 
-#### 三、TypeScript类
+#### 三、TypeScript断言
+```ts
+➖➖➖➖➖➖➖➖➖正确的形式➖➖➖➖➖➖➖➖➖
+// 可以使用类型断言，将 something 断言成 string
+function getLength(something: string | number): number {
+    if ((<string>something).length) {
+        return (<string>something).length;
+    } else {
+        return something.toString().length;
+    }
+}
+```
+
+```ts
+➖➖➖➖➖➖➖➖➖错误的形式➖➖➖➖➖➖➖➖➖
+// 只能访问此联合类型的所有类型里共有的属性或方法
+function getLength(something: string | number): number { ❌
+    return something.length;
+}
+```
+
+#### 四、TypeScript类
+
+```ts
+➖➖➖➖➖➖➖➖➖静态方法➖➖➖➖➖➖➖➖➖
+class Animal {
+    static isAnimal(a) {
+        return a instanceof Animal;
+    }
+}
+
+let a = new Animal('Jack');
+Animal.isAnimal(a); // true
+// 只能通过类名调用
+a.isAnimal(a); // TypeError: a.isAnimal is not a function ❌
+➖➖➖➖➖➖➖➖➖抽象类➖➖➖➖➖➖➖➖➖
+abstract class Animal {
+  abstract makeSound():void
+  move():void {
+    console.log('roaming the earch...')
+  }
+}
+// 子类必须实现抽象类的抽象方法
+```
+
+- public private 和 protected
+
+`public` 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 的
+`private` 修饰的属性或方法是私有的，不能在声明它的类的外部访问
+`protected` 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中也是允许被访问的
 
 
-#### 四、TypeScript泛型
+#### 五、TypeScript泛型
+
+>泛型就是解决 类 接口 方法的复用性、以及对不特定数据类型的支持
+
 - 泛型函数
 ```ts
 function dataT<T>(value:T):T{
@@ -269,6 +445,7 @@ m2.add('c');
 m2.add('a');
 alert(m2.min())
 ```
+
 ```ts
 // 泛型接口定义方式一
 interface ConfigFnOne{
@@ -291,3 +468,7 @@ function setDataTwo<T>(value:T):T{
 var setDataTwoFn:ConfigFnTwo<string> = setDataTwo
 setDataTwoFn('name');
 ```
+
+[TS正反对比](https://juejin.im/post/5d53a8895188257fad671cbc#heading-16)
+[start-with-typescript](https://github.com/dzfrontend/start-with-typescript)
+[深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
