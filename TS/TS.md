@@ -80,12 +80,20 @@ function sum() {
 
 ```
 
-- tuple
+- tuple  元组
 ```ts
 let arr:[number,string] = [123,'this is ts']
 ```
 
 - enum
+- 数字枚举
+- 字符串枚举
+- 异构枚举(数字+字符串) 少用
+- 常量枚举(枚举常量直接替换成了代码)
+
+特点
+- enum只读
+- 表达式保留不计算，常量引用回就算，其中表达式computed后面定义的需要赋值
 ```ts
 enum Flag {success = 1,error = 2};
 
@@ -95,7 +103,7 @@ let f:Flag = Flag.error
 console.log('错误状态',f)
 
 // 枚举（Enum）类型用于取值被限定在一定范围内的场景，比如一周只能有七天	
-// 枚举就是枚举值到枚举名进行反向映射
+// 枚举就是枚举值到枚举名进行*反向映射*
 
 enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
 console.log(Days["Sun"]); // 0
