@@ -182,16 +182,6 @@ class AxiosConfig {
     cancel && source && source.cancel(JSON.stringify(data))
     delete axios.defaults.tokenList[token]
   }
-  removeEmptyValue (params) {
-    if (params instanceof FormData || typeof params !== 'object' || Array.isArray(params)) return params
-    const result = {}
-    for (let k in params) {
-      const value = params[k]
-      if (value === '' || value === null) continue
-      result[k] = value
-    }
-    return result
-  }
   handleCancel = (cancel, data) => {
     if (!cancel) return
     const list = axios.defaults.tokenList
@@ -211,6 +201,16 @@ class AxiosConfig {
         break
     }
     return source.token
+  }
+  removeEmptyValue (params) {
+    if (params instanceof FormData || typeof params !== 'object' || Array.isArray(params)) return params
+    const result = {}
+    for (let k in params) {
+      const value = params[k]
+      if (value === '' || value === null) continue
+      result[k] = value
+    }
+    return result
   }
 }
 
