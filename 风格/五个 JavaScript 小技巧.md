@@ -106,3 +106,39 @@ const result = !conditionA
 
 [五个 JavaScript 小技巧](https://www.johnstewart.dev/five-programming-patterns-i-like/)
 [30secondsofcode](https://www.30secondsofcode.org/)
+
+
+```js
+// const exampleValues = [
+//   {
+//     id:1,
+//     color: 'red'
+//   },
+//   {
+//     id:2,
+//     color: 'red'
+//   },
+//   {
+//     id:3,
+//     color: 'yellow'
+//   },
+//   {
+//     id:4,
+//     color: 'blue'
+//   }
+// ]
+// const [truthyValues, falseyValues, trheee] = exampleValues.reduce((arrays, exampleValue) => {
+//   if (exampleValue.color === 'red') {
+//     arrays[0].push(exampleValue)
+//   } else if  (exampleValue.color === 'blue') {
+//     arrays[1].push(exampleValue)
+//   } else if  (exampleValue.color === 'yellow') {
+//     arrays[2].push(exampleValue)
+//   }
+//   return arrays;
+// }, [[], [], []]);
+
+// console.log(truthyValues)
+// console.log(falseyValues)
+// console.log(trheee)s
+```
