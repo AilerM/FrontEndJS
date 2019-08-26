@@ -16,3 +16,5 @@
 ### 插件
 - [echarts](/插件/echarts.md)
 - [utils](/插件/utils.md)
+
+- JavaScript 的优点是可以写任何东西，缺点是你真的会用它去写这些东西。-- Reg Braithwaite
