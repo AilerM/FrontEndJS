@@ -114,3 +114,10 @@ export default class Select<T = SelectValue> extends React.Component<SelectProps
     render(): JSX.Element;
 }
 export {};
+
+
+interface Obj {
+    a: number;
+    b: number;
+  }
+type RecordObj = Record<'k' | 'y', Obj>
